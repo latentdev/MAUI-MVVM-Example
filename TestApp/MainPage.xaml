@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.MainPage"
+             xmlns:viewmodel="clr-namespace:TestApp.ViewModels"
+             x:DataType="viewmodel:TextModifierViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label
+                    Text="Enter text to modify:"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0" />
+                <Entry
+                    Placeholder="Enter text here"
+                    Text="{Binding InputText}"
+                    Grid.Column="0"
+                    Grid.Row="1"/>
+                <Button
+                    Text="To Upper!"
+                    Command="{Binding ModifyTextCommand}"
+                    Grid.Column="1"
+                    Grid.Row="1" />
+                <Label
+                    Text="{Binding OutputText}"
+                    TextColor="White"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
