@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListExample.MainPage"
-             xmlns:viewmodel="clr-namespace:ListExample.ViewModels">
+             xmlns:viewmodel="clr-namespace:ListExample.ViewModels"
+             Title="{Binding ClassName}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,24 +24,29 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding FirstName}" />
-                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding LastName}" />
-                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Age}" />
-                            <StackLayout Grid.Row="0" Grid.Column="3" Orientation="Horizontal">
-                                <Button Text="Edit"/>
-                            </StackLayout>
-                        </Grid>
+                        <Border Margin="5" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10" />
+                            </Border.StrokeShape>
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding FirstName}" />
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding LastName}" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Age}" />
+                                <StackLayout Grid.Row="0" Grid.Column="3" Orientation="Horizontal">
+                                    <Button Text="Edit"/>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
