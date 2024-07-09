@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ListExample.Services
 {
-    internal class StorageService
+    public class StorageService
     {
+        public StorageService()
+        {
+
+        }
     }
 }

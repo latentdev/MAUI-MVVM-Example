@@ -1,12 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ListExample.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ListExample.ViewModels
 {
@@ -78,15 +73,11 @@ namespace ListExample.ViewModels
                 };
                 value.StudentUpdated += (sender, student) =>
                 {
-                    //should probably do some checks to see if the student is already in the list
-                    //var index = Students.IndexOf(student);
-                    //Students[index] = student;
                     CurrentView = new StudentEdit(student);
                     student.StudentUpdated -= (sender, student) => { };
                 };
                 value.StudentDeleted += (sender, student) =>
                 {
-                    //should probably do some checks to see if the student is already in the list
                     Students.Remove(student);
                     if (Students.Count > 0)
                     {
@@ -100,19 +91,5 @@ namespace ListExample.ViewModels
                 CurrentView = new StudentDetail(value);
             }
         }
-
-        //[RelayCommand]
-        //public void RemoveStudent(StudentViewModel student)
-        //{
-        //    Students.Remove(student);
-        //}
-
-        //[RelayCommand]
-        //public void EditStudent(StudentViewModel student, string firstName, string lastName, int age)
-        //{
-        //    student.FirstName = firstName;
-        //    student.LastName = lastName;
-        //    student.Age = age;
-        //}
     }
 }

@@ -43,21 +43,18 @@ namespace ListExample.ViewModels
         public async Task SaveStudentAsync()
         {
             StudentAdded?.Invoke(this, this);
-            //await Shell.Current.Navigation.PopModalAsync();
         }
 
         [RelayCommand]
         public async Task UpdateStudentAsync()
         {
             StudentUpdated?.Invoke(this, this);
-            //await Shell.Current.Navigation.PopModalAsync();
         }
 
         [RelayCommand]
         public async Task CancelStudentAsync()
         {
             Cancelled?.Invoke(this, this);
-            //await Shell.Current.Navigation.PopModalAsync();
         }
 
         [RelayCommand]

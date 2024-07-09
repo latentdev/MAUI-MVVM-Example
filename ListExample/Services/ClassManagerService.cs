@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ListExample.Services
 {
-    internal class ClassManagerService
+    public class ClassManagerService
     {
     }
 }
