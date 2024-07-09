@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ListExample.Views.NewContent1">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="ListExample.Views.StudentEdit"
+             xmlns:xctk="clr-namespace:Xceed.Maui.Toolkit;assembly=Xceed.Maui.Toolkit">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Margin="5" VerticalTextAlignment="Center" Text="First Name:" />
+        <Entry Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,5,5,5" Text="{Binding FirstName}"/>
+        <Label Grid.Column="0" Grid.Row="1" Margin="5" VerticalTextAlignment="Center" Text="Last Name:" />
+        <Entry Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,5,5,5" Text="{Binding LastName}"/>
+        <Label Grid.Column="0" Grid.Row="2" Margin="5" VerticalTextAlignment="Center" Text="Date of Birth:" />
+        <DatePicker Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="0,5,5,5" Date="{Binding DateOfBirth, Mode=TwoWay}"/>
+        <Grid Grid.Column="2" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <HorizontalStackLayout Grid.Column="1" Spacing="5">
+                <xctk:Button Content="Save" Command="{Binding SaveStudentCommand}" />
+                <xctk:Button Content="Cancel" Command="{Binding CancelStudentCommand}" />
+            </HorizontalStackLayout>
+        </Grid>
+    </Grid>
 </ContentView>

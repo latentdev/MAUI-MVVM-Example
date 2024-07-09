@@ -2,9 +2,9 @@ using ListExample.ViewModels;
 
 namespace ListExample.Views;
 
-public partial class StudentEdit: ContentView
+public partial class StudentDetail : ContentView
 {
-	public StudentEdit(StudentViewModel viewModel)
+	public StudentDetail(StudentViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

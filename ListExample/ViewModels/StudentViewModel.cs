@@ -20,39 +20,58 @@ namespace ListExample.ViewModels
         string lastName = "";
 
         [ObservableProperty]
-        int age = 0;
+        DateTime dateOfBirth;
+
+        public int Age => CalculateAge(DateOfBirth);
 
         [ObservableProperty]
         List<StudentViewModel> notAllowed = new List<StudentViewModel>();
 
         public event EventHandler<StudentViewModel> StudentAdded;
         public event EventHandler<StudentViewModel> StudentUpdated;
+        public event EventHandler<StudentViewModel> Cancelled;
+        public event EventHandler<StudentViewModel> StudentDeleted;
 
-        public StudentViewModel(string firstName, string lastName, int age)
+        public StudentViewModel(string firstName, string lastName, DateTime dateOfBirth)
         {
             FirstName = firstName;
             LastName = lastName;
-            Age = age;
+            DateOfBirth = dateOfBirth;
         }
 
         [RelayCommand]
         public async Task SaveStudentAsync()
         {
             StudentAdded?.Invoke(this, this);
-            await Shell.Current.Navigation.PopModalAsync();
+            //await Shell.Current.Navigation.PopModalAsync();
         }
 
         [RelayCommand]
         public async Task UpdateStudentAsync()
         {
             StudentUpdated?.Invoke(this, this);
-            await Shell.Current.Navigation.PopModalAsync();
+            //await Shell.Current.Navigation.PopModalAsync();
         }
 
         [RelayCommand]
-        public async Task CancelNewStudentAsync()
+        public async Task CancelStudentAsync()
         {
-            await Shell.Current.Navigation.PopModalAsync();
+            Cancelled?.Invoke(this, this);
+            //await Shell.Current.Navigation.PopModalAsync();
+        }
+
+        [RelayCommand]
+        public async Task DeleteStudentAsync()
+        {
+            StudentDeleted?.Invoke(this, this);
+        }
+
+        private int CalculateAge(DateTime dateOfBirth)
+        {
+            var today = DateTime.Today;
+            var age = today.Year - dateOfBirth.Year;
+            if (dateOfBirth.Date > today.AddYears(-age)) age--; // Adjust if birthday hasn't occurred this year
+            return age;
         }
     }
 }

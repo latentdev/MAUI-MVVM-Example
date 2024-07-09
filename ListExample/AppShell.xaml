@@ -5,8 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ListExample"
     Shell.FlyoutBehavior="Disabled"
-    Title="ListExample">
-
+    Title="Class Shuffle">
     <ShellContent
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
